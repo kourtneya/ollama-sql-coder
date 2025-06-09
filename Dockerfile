@@ -1,8 +1,12 @@
 FROM ollama/ollama
 
-WORKDIR /app
+# Install curl
+RUN apt-get update && apt-get install -y curl
+
+# Copy the start script
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
 
 EXPOSE 11434
 
-# Start the Ollama server
-ENTRYPOINT ["/bin/bash","-c","ollama serve & sleep 5 && ollama run sqlcoder && wait"]
+ENTRYPOINT ["/bin/bash", "/start.sh"]
