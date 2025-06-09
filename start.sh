@@ -12,7 +12,7 @@ until curl -s http://localhost:11434; do
 done
 
 # Pull the model
-ollama pull sqlcoder
+ollama pull gemma:2b
 
 # Keep the container running
 tail -f /dev/null
